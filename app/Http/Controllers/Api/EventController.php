@@ -54,7 +54,6 @@ class EventController extends Controller
     public function store(StoreEventRequest $request): EventResource
     {
         $event = $this->eventService->createEvent($request->validated());
-        
         return new EventResource($event);
     }
 
