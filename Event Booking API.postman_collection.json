@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "f3a31bd3-635b-4e39-b611-14bbf51d8379",
+		"name": "Event Booking API",
+		"description": "A RESTful API for an Event Booking System built with Laravel 12. This collection contains all endpoints for managing events, attendees, and bookings.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44921422",
+		"_collection_link": "https://mastermuntazar.postman.co/workspace/Master-Muntazar's-Workspace~cdf30ca3-8794-4fc2-8b61-72f2cc4d5626/collection/44921422-f3a31bd3-635b-4e39-b611-14bbf51d8379?action=share&source=collection_link&creator=44921422"
+	},
+	"item": [
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "List Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/events?country=&per_page=15&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "",
+									"description": "Filter events by country (optional)"
+								},
+								{
+									"key": "per_page",
+									"value": "15",
+									"description": "Number of events per page"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number"
+								}
+							]
+						},
+						"description": "Get a paginated list of events with optional filtering by country"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tech Conference 2023\",\n    \"description\": \"Annual technology conference featuring the latest innovations\",\n    \"country\": \"USA\",\n    \"date\": \"2023-12-15\",\n    \"time\": \"09:00\",\n    \"capacity\": 200\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/events",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							]
+						},
+						"description": "Create a new event"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/events/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						},
+						"description": "Get details of a specific event by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Tech Conference 2023\",\n    \"description\": \"Updated description for the annual technology conference\",\n    \"country\": \"Canada\",\n    \"date\": \"2023-12-20\",\n    \"time\": \"10:00\",\n    \"capacity\": 250\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/events/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						},
+						"description": "Update an existing event by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/events/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						},
+						"description": "Delete an event by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events by Country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/events?country=USA&per_page=15&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "USA",
+									"description": "Filter events by country"
+								},
+								{
+									"key": "per_page",
+									"value": "15",
+									"description": "Number of events per page"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number"
+								}
+							]
+						},
+						"description": "Get a list of events filtered by country"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for managing events"
+		},
+		{
+			"name": "Attendees",
+			"item": [
+				{
+					"name": "Register Attendee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"1234567890\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/attendees",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendees"
+							]
+						},
+						"description": "Register a new attendee"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for managing attendees"
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": 1,\n    \"attendee_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bookings"
+							]
+						},
+						"description": "Book an attendee into an event"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for managing bookings"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		}
+	]
+}
